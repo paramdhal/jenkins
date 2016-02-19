@@ -2,12 +2,12 @@
 <project name="Deploy" default="gulp">
 	<target name="gulp" depends="npm_install,gulp_build"/>
 	<target name="npm_install" description="Install NPM dependencies">
-		<exec executable="npm">
+		<exec executable="npm" checkreturn="true">
 			<arg value="install"/>
 		</exec>
 	</target>
 	<target name="gulp_build" description="Gulp build">
-		<exec executable="gulp" >
+		<exec executable="gulp" checkreturn="true" >
 			<arg value="build"/>
 		</exec>
 	</target>
