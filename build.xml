@@ -7,7 +7,7 @@
 		</exec>
 	</target>
 	<target name="gulp_build" description="Gulp build">
-		<exec executable="gulp" failonerror="true">
+		<exec executable="gulp" >
 			<arg value="build"/>
 		</exec>
 	</target>
