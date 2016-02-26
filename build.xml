@@ -7,7 +7,8 @@
 		</exec>
 	</target>
 	<target name="gulp_build" description="Gulp build">
-		<exec executable="gulp" checkreturn="true" >
+		<delete dir="app/build" includeemptydirs="true" verbose="true" failonerror="true" />
+		<exec executable="gulp" >
 			<arg value="build"/>
 		</exec>
 	</target>
