@@ -1,26 +1,28 @@
 <?xml version="1.0"?>
 <project name="Deploy" default="gulp">
-	<target name="gulp" depends="npm_install,gulp_build,add_dist,commit_dist"/>
+	<target name="gulp" depends="npm_install,cleandir,gulp_build,add_dist,commit_dist"/>
 	<target name="npm_install" description="Install NPM dependencies">
 		<exec executable="npm" checkreturn="true">
 			<arg value="install"/>
 		</exec>
 	</target>
+	<target name="cleandir">
+		<delete dir="app/build" includeemptydirs="true" verbose="true" failonerror="true"/>
+	</target>
 	<target name="gulp_build" description="Gulp build">
-		<delete dir="app/build" includeemptydirs="true" verbose="true" failonerror="true" />
-		<exec executable="gulp" >
+		<exec executable="gulp" checkreturn="true" >
 			<arg value="build"/>
 		</exec>
 	</target>
 	<target name="add_dist" description="Add generated files">
-		<exec executable="git">
+		<exec executable="git" checkreturn="true">
 			<arg value="add"/>
 			<arg value="-f"/>
 			<arg value="app/build"/>
 		</exec>
 	</target>
 	<target name="commit_dist" description="Commit generated files">
-	<exec executable="git">
+	<exec executable="git" checkreturn="true">
 		<arg value="commit"/>
 		<arg value="-m"/>
 		<arg value="Add Gulp generated files"/>
