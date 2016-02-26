@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project name="Deploy" default="gulp">
-	<target name="gulp" depends="npm_install,gulp_build"/>
+	<target name="gulp" depends="npm_install,gulp_build,add_dist"/>
 	<target name="npm_install" description="Install NPM dependencies">
 		<exec executable="npm" checkreturn="true">
 			<arg value="install"/>
@@ -10,6 +10,13 @@
 		<delete dir="app/build" includeemptydirs="true" verbose="true" failonerror="true" />
 		<exec executable="gulp" >
 			<arg value="build"/>
+		</exec>
+	</target>
+	<target name="add_dist" description="Add generated files">
+		<exec executable="git">
+			<arg value="add"/>
+			<arg value="-f"/>
+			<arg value="app/build"/>
 		</exec>
 	</target>
 </project>
