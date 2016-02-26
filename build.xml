@@ -7,7 +7,7 @@
 		</exec>
 	</target>
 	<target name="cleandir">
-		<delete dir="app/build" includeemptydirs="true" verbose="true" failonerror="true"/>
+		<delete dir="app/build" includeemptydirs="true" verbose="false" failonerror="true"/>
 	</target>
 	<target name="gulp_build" description="Gulp build">
 		<exec executable="gulp" checkreturn="true" >
